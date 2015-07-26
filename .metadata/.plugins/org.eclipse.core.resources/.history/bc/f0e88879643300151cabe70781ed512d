@@ -1,0 +1,36 @@
+package com.springer.materials;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class SpringerMaterial {
+
+	public static void main(String[] args) {
+
+		WebDriver wd = new FirefoxDriver();
+		wd.get("http://materials.springer.com/");
+		
+		WebDriverWait wdw=new WebDriverWait(wd, 30);
+		wdw.until(ExpectedConditions.elementToBeClickable(By.id("iAmGoodBtn")));
+		wd.findElement(By.id("iAmGoodBtn")).click();
+		wd.findElement(By.id("searchTerm")).sendKeys("methanol");
+		wd.findElement(By.id("search")).click();
+		List<WebElement> we=wd.findElements(By.xpath("//div[@class='media__body']/h2/a/*[text()='Methanol']"));
+		for (WebElement webElement : we) {
+			webElement.click();
+			break;
+		}
+		wd.findElement(By.xpath("//*[@class='look-inside__badge interactive-structure-badge']")).click();
+		
+		
+	}
+}
+

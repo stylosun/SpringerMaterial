@@ -1,0 +1,27 @@
+package com.springer.materials;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class SpringerMaterial {
+
+	public static void main(String[] args) {
+
+		WebDriver wd = new FirefoxDriver();
+		wd.get("http://materials.springer.com/");
+		
+		WebDriverWait wdw=new WebDriverWait(wd, 30);
+		wdw.until(ExpectedConditions.elementToBeClickable(By.id("iAmGoodBtn")));
+	//	wd.findElement(By.id("iAmGoodBtn")).click();
+		
+		
+		
+	}
+
+}
+
